@@ -1,4 +1,4 @@
-## Deputy ACL
+##ACL (Access Control List Role-Based Access)
 
 ### Programing Langauage used
 
@@ -38,6 +38,7 @@
 
 ### How to test
 1. Run unit tests
+go inside the dir github.com/srvsngh200892/acl and run
 `go test ./... -v -cover`
 
 2. How to create role
@@ -45,33 +46,7 @@ For example, here's the curl command
 
 ```
 # set roles
-curl -X POST http://localhost:8080/roles -d "[
-  {
-      \"Id\": 1,
-      \"Name\": \"System Administrator\",
-      \"Parent\": 0
-  },
-  {
-      \"Id\": 2,
-      \"Name\": \"Location Manager\",
-      \"Parent\": 1
-  },
-  {
-      \"Id\": 3,
-      \"Name\": \"Supervisor\",
-      \"Parent\": 2
-  },
-  {
-      \"Id\": 4,
-      \"Name\": \"Employee\",
-      \"Parent\": 3
-  },
-  {
-      \"Id\": 5,
-      \"Name\": \"Trainer\",
-      \"Parent\": 3
-  }
-]"
+curl -X POST http://localhost:3000/roles -d "replcae this with valid roles json"
 
 output: 201
 ```
@@ -80,41 +55,15 @@ output: 201
 
 ```
 # set users
-curl -X POST http://localhost:8080/users -d "[
-  {
-    \"Id\":   1,
-    \"Name\": \"Adam Admin\",
-    \"Role\": 1
-  },
-  {
-    \"Id\":   2,
-    \"Name\": \"Emily Employee\",
-    \"Role\": 4
-  },
-  {
-    \"Id\":   3,
-    \"Name\": \"Sam Supervisor\",
-    \"Role\": 3
-  },
-  {
-    \"Id\":   4,
-    \"Name\": \"Mary Manager\",
-    \"Role\": 2
-  },
-  {
-    \"Id\":   5,
-    \"Name\": \"Steve Trainer\",
-    \"Role\": 5
-  }
-]"
+curl -X POST http://localhost:3000/users -d ""replace this with valid users json""
 
 output: 201
 ```
 
-3. How to find subordinate
+3. How to find subordinates
 
 ```
-curl http://localhost:8080/subordinates/3
+curl http://localhost:3000/subordinates/3
 
 output: [{"Id":2,"Name":"Emily Employee","Role":4},{"Id":5,"Name":"Steve Trainer","Role":5}]
 
